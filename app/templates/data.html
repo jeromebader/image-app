@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Data Overview{% endblock %}
+{% block content %}
+    <h1>Data Overview</h1>
+    
+    <h2>Users</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Creation Date</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.creation_date }}</td>
+                <td>{{ user.active }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Images</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>File Name</th>
+                <th>File Path</th>
+                <th>Upload Date</th>
+                <th>User ID</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>{{ image.id }}</td>
+                <td>{{ image.file_name }}</td>
+                <td>{{ image.file_path }}</td>
+                <td>{{ image.upload_date }}</td>
+                <td>{{ image.user_id }}</td>
+                <td>{{ image.active }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

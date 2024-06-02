@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Rename Image{% endblock %}
+{% block content %}
+    <div class="mt-4">
+        <h1>Rename Image</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.new_name.label(class="form-control-label") }}
+                {{ form.new_name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

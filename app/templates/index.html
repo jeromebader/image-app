@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Welcome to the Image App</h1>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ url_for('static', filename='uploads/' ~ current_user.id ~ '/' ~ image.file_name) }}" class="card-img-top" alt="{{ image.file_name }}">
+                    <div class="card-body">
+                        <p class="card-text">{{ image.file_name }}</p>
+                        <p class="card-text"><small class="text-muted">Uploaded on {{ image.upload_date }}</small></p>
+                        <form action="{{ url_for('main.delete_image', image_id=image.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        <a href="{{ url_for('main.rename_image', image_id=image.id) }}" class="btn btn-primary btn-sm">Rename</a>
+                        <a href="{{ url_for('main.download_image', image_id=image.id) }}" class="btn btn-success btn-sm">Download</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
